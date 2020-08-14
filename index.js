@@ -11,10 +11,7 @@ app.use(cors());
 //use body-parser
 app.use(bodyParser.json());
 
-const user = process.env.DB_USER;
-const pass = process.env.DB_PASS;
-const uri =
-  `mongodb+srv://${user}:${pass}@cluster0.vixe5.mongodb.net/redOnion?retryWrites=true&w=majority`;
+const uri = process.env.DB_PATH;
 let client = new MongoClient(uri, { useNewUrlParser: true });
 
 //routes
