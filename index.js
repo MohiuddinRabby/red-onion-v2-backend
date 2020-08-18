@@ -34,14 +34,14 @@ app.get("/foods", (req, res) => {
   });
 });
 //find product according to key
-app.get("/foods/:id", (req, res) => {
-  const key = req.params.key;
+app.get("/food/:keys", (req, res) => {
+  const keys = req.params.keys;
   //
   client = new MongoClient(uri, { useNewUrlParser: true });
   client.connect((err) => {
     const collection = client.db("redOnion").collection("foodItems");
     // perform actions on the collection object
-    collection.find({ key }).toArray((err, documents) => {
+    collection.find({ keys }).toArray((err, documents) => {
       if (err) {
         console.log("error", err);
       } else {
