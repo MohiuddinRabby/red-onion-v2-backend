@@ -33,6 +33,24 @@ app.get("/foods", (req, res) => {
     client.close();
   });
 });
+//find product according to key
+app.get("/foods/:id", (req, res) => {
+  const key = req.params.key;
+  //
+  client = new MongoClient(uri, { useNewUrlParser: true });
+  client.connect((err) => {
+    const collection = client.db("redOnion").collection("foodItems");
+    // perform actions on the collection object
+    collection.find({ key }).toArray((err, documents) => {
+      if (err) {
+        console.log("error", err);
+      } else {
+        res.send(documents[0]);
+      }
+    });
+    client.close();
+  });
+});
 //port calling
 app.listen(3010, () => {
   console.log("listening to port --3010--");
