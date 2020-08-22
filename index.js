@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
-const port = 3010 || 4200;
+const port = process.env.PORT || 3010;
 // middlewares
 //use cors
 app.use(cors());
