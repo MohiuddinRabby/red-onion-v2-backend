@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
-
+const port = 3010 || 4200;
 // middlewares
 //use cors
 app.use(cors());
@@ -52,6 +52,6 @@ app.get("/food/:keys", (req, res) => {
   });
 });
 //port calling
-app.listen(3010, () => {
-  console.log("listening to port --3010--");
+app.listen(port, () => {
+  console.log(`listening port ${port}`);
 });
